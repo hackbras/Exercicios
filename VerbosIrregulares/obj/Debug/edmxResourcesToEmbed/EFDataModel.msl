@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FerramentasModelStoreContainer" CdmEntityContainer="CSFerramentasEntities">
+    <EntitySetMapping Name="Verbs">
+      <EntityTypeMapping TypeName="FerramentasModel.Verb">
+        <MappingFragment StoreEntitySet="Verbs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="baseForm" ColumnName="baseForm" />
+          <ScalarProperty Name="pastSimple" ColumnName="pastSimple" />
+          <ScalarProperty Name="pastParticiple" ColumnName="pastParticiple" />
+          <ScalarProperty Name="translate" ColumnName="translate" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="FerramentasModel.Store.fn_verbos" FunctionImportName="fn_verbos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FerramentasModel.fn_verbos_Result">
+          <ScalarProperty Name="resultado" ColumnName="resultado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="FerramentasModel.Store.fn_word" FunctionImportName="fn_word">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FerramentasModel.fn_word_Result">
+          <ScalarProperty Name="translate" ColumnName="translate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RandomNumber" FunctionName="FerramentasModel.Store.RandomNumber" />
+  </EntityContainerMapping>
+</Mapping>

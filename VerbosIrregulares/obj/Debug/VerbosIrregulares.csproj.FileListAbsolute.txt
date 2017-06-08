@@ -1,0 +1,13 @@
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\bin\Debug\VerbosIrregulares.exe.config
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\bin\Debug\VerbosIrregulares.exe
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\bin\Debug\VerbosIrregulares.pdb
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\obj\Debug\VerbosIrregulares.Properties.Resources.resources
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\obj\Debug\VerbosIrregulares.csproj.GenerateResource.Cache
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\obj\Debug\VerbosIrregulares.exe
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\obj\Debug\VerbosIrregulares.pdb
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\obj\Debug\VerbosIrregulares.csprojResolveAssemblyReference.cache
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\obj\Debug\VerbosIrregulares.ScreenExercices.resources
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\bin\Debug\EntityFramework.dll
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\bin\Debug\EntityFramework.xml
+c:\users\mique_000\documents\visual studio 2013\Projects\Exercicios\VerbosIrregulares\bin\Debug\EntityFramework.SqlServer.xml

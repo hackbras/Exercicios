@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FerramentasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Verbs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baseForm" Type="varchar" MaxLength="255" />
+          <Property Name="pastSimple" Type="varchar" MaxLength="255" />
+          <Property Name="pastParticiple" Type="varchar" MaxLength="255" />
+          <Property Name="translate" Type="varchar" MaxLength="70" />
+          <Property Name="priority" Type="int" />
+        </EntityType>
+        <Function Name="fn_verbos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="translate" Type="varchar" Mode="In" />
+          <Parameter Name="baseForm" Type="varchar" Mode="In" />
+          <Parameter Name="pastSimple" Type="varchar" Mode="In" />
+          <Parameter Name="pastParticiple" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="resultado" Type="varchar" MaxLength="3" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_word" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_word" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="translate" Type="varchar" MaxLength="70" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="RandomNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="FerramentasModelStoreContainer">
+          <EntitySet Name="Verbs" EntityType="Self.Verbs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FerramentasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fn_verbos_Result">
+          <Property Name="resultado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="fn_word_Result">
+          <Property Name="translate" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="Verb">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baseForm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pastSimple" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pastParticiple" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="translate" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="priority" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="CSFerramentasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Verbs" EntityType="Self.Verb" />
+          <FunctionImport Name="fn_verbos" IsComposable="true" ReturnType="Collection(FerramentasModel.fn_verbos_Result)">
+            <Parameter Name="translate" Mode="In" Type="String" />
+            <Parameter Name="baseForm" Mode="In" Type="String" />
+            <Parameter Name="pastSimple" Mode="In" Type="String" />
+            <Parameter Name="pastParticiple" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fn_word" IsComposable="true" ReturnType="Collection(FerramentasModel.fn_word_Result)">
+            <Parameter Name="id_word" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RandomNumber" ReturnType="Collection(Int32)" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FerramentasModelStoreContainer" CdmEntityContainer="CSFerramentasEntities">
+          <EntitySetMapping Name="Verbs">
+            <EntityTypeMapping TypeName="FerramentasModel.Verb">
+              <MappingFragment StoreEntitySet="Verbs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baseForm" ColumnName="baseForm" />
+                <ScalarProperty Name="pastSimple" ColumnName="pastSimple" />
+                <ScalarProperty Name="pastParticiple" ColumnName="pastParticiple" />
+                <ScalarProperty Name="translate" ColumnName="translate" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="FerramentasModel.Store.fn_verbos" FunctionImportName="fn_verbos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FerramentasModel.fn_verbos_Result">
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="FerramentasModel.Store.fn_word" FunctionImportName="fn_word">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FerramentasModel.fn_word_Result">
+                <ScalarProperty Name="translate" ColumnName="translate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RandomNumber" FunctionName="FerramentasModel.Store.RandomNumber" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

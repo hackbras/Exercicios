@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FerramentasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="fn_verbos_Result">
+    <Property Name="resultado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="fn_word_Result">
+    <Property Name="translate" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityType Name="Verb">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="baseForm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="pastSimple" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="pastParticiple" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="translate" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="priority" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="CSFerramentasEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Verbs" EntityType="Self.Verb" />
+    <FunctionImport Name="fn_verbos" IsComposable="true" ReturnType="Collection(FerramentasModel.fn_verbos_Result)">
+      <Parameter Name="translate" Mode="In" Type="String" />
+      <Parameter Name="baseForm" Mode="In" Type="String" />
+      <Parameter Name="pastSimple" Mode="In" Type="String" />
+      <Parameter Name="pastParticiple" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fn_word" IsComposable="true" ReturnType="Collection(FerramentasModel.fn_word_Result)">
+      <Parameter Name="id_word" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RandomNumber" ReturnType="Collection(Int32)" />
+  </EntityContainer>
+</Schema>
